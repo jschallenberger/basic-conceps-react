@@ -23,6 +23,14 @@ export function Post({author, content, publishedAt}) {
     setNewComment(event.target.value)
   }
 
+  function deleteComment(commentToDelete){
+    const commentWithoutDeletedOne = comments.filter(comment=>{
+      return comment != commentToDelete
+    })
+
+    setComments(commentWithoutDeletedOne)
+  }
+
   // const publishedAtFormated = new Intl.DateTimeFormat('pt-BR',{
   //   day: '2-digit',
   //   month: 'long',
@@ -84,7 +92,7 @@ export function Post({author, content, publishedAt}) {
 
       <div className={styles.commentList}>
         {comments.map(comment=>{
-          return(<Comment key={comment} content={comment}/>)
+          return(<Comment key={comment} content={comment} onDeleteComment={deleteComment}/>)
         })}
       </div>
     </article>
