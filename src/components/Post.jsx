@@ -94,13 +94,7 @@ export function Post({author, content, publishedAt}) {
 
       <div className={styles.commentList}>
         {comments.map(comment=>{
-          return(
-            <Comment 
-              key={comment} 
-              content={comment} 
-              onDeleteComment={deleteComment}
-            />
-          )
+          return(<Comment key={comment} content={comment}/>)
         })}
       </div>
     </article>
