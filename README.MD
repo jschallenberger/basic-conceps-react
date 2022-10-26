@@ -16,7 +16,8 @@
     - Property changes or
     - Higher component is rendered again
     - Always have unique keys when rendering list - improve performance
-
+- Communication between components using hooks
+- Immutability
 
 ## Development
 - Security - Prevent JS Injection - Never return HTML from your backend

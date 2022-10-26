@@ -19,8 +19,18 @@ export function Post({author, content, publishedAt}) {
     setNewComment('')
   }
 
-  function handleNewCommentChange(){
+  function handleNewCommentChange(event){
     setNewComment(event.target.value)
+  }
+
+  function deleteComment(commentToDelete){
+
+    const commentsWithoutDeletedOne = comments.filter(
+      comment=>{
+        return comment != commentToDelete
+      })
+
+    setComments(commentsWithoutDeletedOne)
   }
 
   // const publishedAtFormated = new Intl.DateTimeFormat('pt-BR',{
@@ -74,7 +84,7 @@ export function Post({author, content, publishedAt}) {
           name='comment'
           placeholder="Deixe um comentário"
           value={newComment}
-          onChange={handleNewCommentChange}
+          onChange={handleNewCommentChange(e)}
         />
 
         <footer>
@@ -84,7 +94,13 @@ export function Post({author, content, publishedAt}) {
 
       <div className={styles.commentList}>
         {comments.map(comment=>{
-          return(<Comment key={comment} content={comment}/>)
+          return(
+            <Comment 
+              key={comment} 
+              content={comment} 
+              onDeleteComment={deleteComment}
+            />
+          )
         })}
       </div>
     </article>
