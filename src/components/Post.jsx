@@ -12,7 +12,7 @@ export function Post({author, content, publishedAt}) {
 
   const [newComment, setNewComment] = useState('')
 
-  function handleCreateNewComment(e){
+  function handleCreateNewComment(){
     event.preventDefault()
     
     setComments([...comments, newComment ])
@@ -84,7 +84,7 @@ export function Post({author, content, publishedAt}) {
           name='comment'
           placeholder="Deixe um comentário"
           value={newComment}
-          onChange={handleNewCommentChange(e)}
+          onChange={handleNewCommentChange}
         />
 
         <footer>
@@ -94,7 +94,7 @@ export function Post({author, content, publishedAt}) {
 
       <div className={styles.commentList}>
         {comments.map(comment=>{
-          return(<Comment key={comment} content={comment}/>)
+          return(<Comment key={comment} content={comment} onDeleteComment={deleteComment}/>)
         })}
       </div>
     </article>
